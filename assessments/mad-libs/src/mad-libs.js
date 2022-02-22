@@ -6,7 +6,6 @@ import './mad-libs.css';
 const MadLibs = () => {
     const [questions, setQuestions] = useState([]);
     const [values, setValues] = useState([]);
-    // const [answers, setAnswers] = useState([]);
     const [madLib, setMadLib] = useState([])
     
     const INITIAL_VALUE = {
@@ -48,7 +47,6 @@ const MadLibs = () => {
         }
         
         const first = answers[0] + ' ' + values[0];
-        // console.log([first, ...otherAnswers]);
         const combined = [first, ...otherAnswers].reduce((acc, next) => acc + next);
         console.log(combined);
         return combined;
