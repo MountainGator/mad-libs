@@ -18,7 +18,8 @@
 
 .form-btn {
     display: block;
-    margin:1rem;
+    margin: auto;
+    margin-top: 1rem;
     color:white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
@@ -27,6 +28,7 @@
     font-size: 2rem;
     border-radius: 0.5rem;
     padding:0.5rem;
+    width: 15rem;
 }
 
 .form-btn:active {
