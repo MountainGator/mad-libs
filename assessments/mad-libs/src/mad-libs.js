@@ -7,6 +7,8 @@ const MadLibs = () => {
     const [questions, setQuestions] = useState([]);
     const [values, setValues] = useState([]);
     const [madLib, setMadLib] = useState([])
+    const [formData, setFormData] = useState([]);
+    
 
     useEffect(() => {
         async function getMadLib () {
@@ -49,7 +51,10 @@ const MadLibs = () => {
 
             <NewMadLibsForm 
                 questions={questions}
-                handleSubmit={handleSubmit} 
+                values={values}
+                handleSubmit={handleSubmit}
+                formData={formData}
+                setFormData={setFormData}
             />
 
             <p className='display-text'>{madLib}</p>
