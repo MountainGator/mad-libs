@@ -7,7 +7,18 @@ const MadLibs = () => {
     const [questions, setQuestions] = useState([]);
     const [values, setValues] = useState([]);
     const [madLib, setMadLib] = useState([])
-    const [formData, setFormData] = useState([]);
+    const [formData, setFormData] = useState({
+        '1': '',
+        '2': '',
+        '3': '',
+        '4': '',
+        '5': '',
+        '6': '',
+        '7': '',
+        '8': '',
+        '9': '',
+        '10': ''
+    });
     
 
     useEffect(() => {
@@ -24,9 +35,10 @@ const MadLibs = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        const inputs = [...document.querySelectorAll('input')];
-        const answers = inputs.map(n => n.value);
+        console.log(formData);
+        // const inputs = [...document.querySelectorAll('input')];
+        const inputs = Object.keys(formData);
+        const answers = inputs.map(n => formData[n]);
 
         setMadLib(addMadLib(answers, values));
     }
@@ -51,7 +63,6 @@ const MadLibs = () => {
 
             <NewMadLibsForm 
                 questions={questions}
-                values={values}
                 handleSubmit={handleSubmit}
                 formData={formData}
                 setFormData={setFormData}

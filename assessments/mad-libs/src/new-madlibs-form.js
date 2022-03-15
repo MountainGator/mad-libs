@@ -1,9 +1,10 @@
 import './mad-form.css';
 import { v4 as uuid } from 'uuid';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-const NewMadLibsForm = ({ questions, values, handleSubmit, formData, setFormData }) => {
+const NewMadLibsForm = ({ questions, handleSubmit, formData, setFormData }) => {
     const [isFilled, setFilled] = useState(false);
+    let count = 1;
 
     const handleChange = (e) => {
         console.log(e);
@@ -27,27 +28,28 @@ const NewMadLibsForm = ({ questions, values, handleSubmit, formData, setFormData
 
     return (
         <form className='madlibsform' onSubmit={handleSubmit}> 
-            {useEffect(() => {
-                questions.map(q => {
-                let uID = uuid();
-                return (
-                    <div className='form-element' key={uuid()}>
-                        <label htmlFor={uID} className="form-label">
-                            {q.slice(0,1).toUpperCase() + q.slice(1, q.length)}:
-                        </label>
-                        <input 
-                        type='text' 
-                        name={uID} 
-                        className='form-input' 
-                        value={formData.uID}
-                        placeholder={q}
-                        onChange={handleChange}
-                        />
-                    </div>
+            { questions.map(q => {
+                    let countString = `${count}`;
+                    count ++;
+                    return (
+                        <div className='form-element' key={uuid()}>
+                            <label htmlFor={countString} className="form-label">
+                                {q.slice(0,1).toUpperCase() + q.slice(1, q.length)}:
+                            </label>
+                            <input 
+                            type='text' 
+                            name={countString}
+                            id={countString} 
+                            className='form-input' 
+                            value={formData.countString}
+                            placeholder={q}
+                            onChange={handleChange}
+                            />
+                        </div>
                     )
+                   
                     })
-                }, [questions, values])
-            }
+                }
          {isFilled && <button className='form-btn' type='submit'>Make MadLib!</button>}
         </form>
     );
